@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>중고거래 플랫폼 - 판매ing</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            font-family: 'Jua', sans-serif;
+        }
+
+        .entire {
+            width: 500px;
+            margin: auto;
+        }
+
+        .sell-image {
+            height: 300px;
+            margin: 30px auto 30px auto;
+            display: block;
+        }
+
+        .price {
+            font-size: 20px;
+        }
+
+        .item-order{
+            width:500px;
+        }
+
+        .buttonalign{
+            display:block;
+            margin:auto;
+        }
+
+        .exchange{
+            color:blue;
+            font-weight: bold;
+            font-style: Italic;
+        }
+
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            q1()
+        });
+
+        function q1(){
+            $('#names-q1').empty();
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/rate",
+                data: {},
+                success: function (response) {
+                    let rate = response["rate"];
+
+                    let temp_html = ''
+
+                    temp_html = `<h5 class="exchange"> 달러 - 원 환율 : ${rate}</h5>`
+
+                    $('#names-q1').append(temp_html);
+
+                }
+            })
+        }
+
+        function order(){
+            alert("주문이 완료되었습니다!");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="entire">
+        <img class="sell-image"
+             src="https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/photo_1517336714731_489689fd1ca8_9.jpeg">
+        <h1> 맥북 판매중 <span class="price">가격 : 420,000원 / 일시불 </span></h1>
+        <h5> 이 맥북은 2년정도 매장에 진열되어있다가 재고정리 중 판매하는 제품입니다. 총 3대 있으며, 흠집 / 기스 없습니다. 네고 가능합니다.</h5>
+
+        <h5 class="exchange" id="names-q1"> 달러 - 원 환율 : 1219.15</h5>
+
+        <div class = "item-order">
+            <div class="input-group mb-3">
+                <div class="input-group-pretend">
+                    <span class="input-group-text">주문자 이름 </span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-pretend">
+                    <span class="input-group-text">수량 </span>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected> -- 수량을 선택하세요 -- </option>
+                    <option value="1">1대만 구입</option>
+                    <option value="2">2대 구입</option>
+                    <option value="3">3대 구입</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-pretend">
+                    <span class="input-group-text">주소 </span>
+                </div>
+                <input type="text" class="form-control" aria-label="Default">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-pretend">
+                    <span class="input-group-text">전화번호 </span>
+               </div>
+                <input type="text" class="form-control" aria-label="Default">
+            </div>
+
+             <button onClick=order() type="button" class="btn btn-primary buttonalign">주문하기</button>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
